@@ -1,0 +1,104 @@
+/* AddQuizCard.css */
+
+.add-quiz-card {
+    background-color: #f8f9fa; /* Light background color */
+    color: #495057; /* Text color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+    margin: 20px 0;
+    display: flex;
+    
+  }
+
+  .headline{
+    display: flex;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  input {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 150px;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Additional styling for checkbox */
+  input[type="checkbox"] {
+    margin-top: 5px;
+  }
+
+  .q{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: balck 1px solid;
+  }
+  
+  .answers{
+    display: flex;
+    justify-content: center;
+  }
+
+  .submitQuiz{
+    background-color: rgb(151, 120, 120);
+  }
+
+  .submitQuiz:hover {
+    background-color: rgb(223, 31, 31);
+}
+
+.removeAnswers{
+    margin-left: 20px;
+    background-color: rgb(151, 120, 120);
+}
+
+.removeAnswers:hover {
+    background-color: rgb(223, 31, 31);
+}
+
+.removeQuestion{
+    margin-bottom: 10px;
+    background-color: rgb(151, 120, 120);
+}
+
+.removeQuestion:hover {
+    background-color: red;
+}

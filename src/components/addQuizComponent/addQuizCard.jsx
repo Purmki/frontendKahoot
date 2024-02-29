@@ -1,9 +1,12 @@
 import React from 'react';
+import "../../design/addQuizCard.css"
 
 const AddQuizCard = ({ quiz, handleInputChange, addQuestion, removeQuestion, addAnswer, removeAnswer, handleSubmit }) => {
   return (
     <div>
-      <h1>Quiz Builder</h1>
+      <div className='headline'>
+      <h1>build your own quiz starting today!</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Quiz Title:</label>
         <input
@@ -13,7 +16,7 @@ const AddQuizCard = ({ quiz, handleInputChange, addQuestion, removeQuestion, add
           onChange={(e) => handleInputChange(e)}
         />
         {quiz.questions.map((question, questionIndex) => (
-          <div key={questionIndex}>
+          <div className='q' key={questionIndex}>
             <label htmlFor={`questionText_${questionIndex}`}>Question:</label>
             <input
               type="text"
@@ -21,11 +24,11 @@ const AddQuizCard = ({ quiz, handleInputChange, addQuestion, removeQuestion, add
               name="questionText"
               onChange={(e) => handleInputChange(e, questionIndex, 0)}
             />
-            <button type="button" onClick={() => removeQuestion(questionIndex)}>
+            <button type="button" className='removeQuestion' onClick={() => removeQuestion(questionIndex)}>
               Remove Question
             </button>
             {question.answers.map((answer, answerIndex) => (
-              <div key={answerIndex}>
+              <div className='answers' key={answerIndex}>
                 <label htmlFor={`answerText_${questionIndex}_${answerIndex}`}>Answer:</label>
                 <input
                   type="text"
@@ -43,7 +46,7 @@ const AddQuizCard = ({ quiz, handleInputChange, addQuestion, removeQuestion, add
                   checked={answer.isCorrect}
                   onChange={(e) => handleInputChange(e, questionIndex, answerIndex)}
                 />
-                <button type="button" onClick={() => removeAnswer(questionIndex, answerIndex)}>
+                <button type="button" className='removeAnswers' onClick={() => removeAnswer(questionIndex, answerIndex)}>
                   Remove Answer
                 </button>
               </div>
@@ -56,7 +59,7 @@ const AddQuizCard = ({ quiz, handleInputChange, addQuestion, removeQuestion, add
         <button type="button" onClick={addQuestion}>
           Add Question
         </button>
-        <button type="submit">Submit Quiz</button>
+        <button className='submitQuiz' type="submit">Submit Quiz</button>
       </form>
     </div>
   );

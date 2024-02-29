@@ -3,7 +3,7 @@ import AddQuizCard from '../components/addQuizComponent/addQuizCard';
 import axios from "axios"
 import { UserContext } from '../Context/Theme';
 import { baseUrl } from '../components/baseUrl';
-
+// import "../design/QuizzBuilder.css"
 
 
 const QuizBuilder = () => {

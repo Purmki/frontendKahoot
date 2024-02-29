@@ -1,0 +1,152 @@
+body {
+    position: relative;
+    height: 100%;
+    align-items: center;
+    background: #a8c0ff;
+    font-family: 'Comfortaa', cursive;
+    color: #fff;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: points;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    background: #a8c0ff;
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    padding-top: 80px;
+    overflow-y: hidden;
+}
+
+main {
+    background: rgba(217, 214, 228, 0.12);
+    border-radius: 10px;
+    padding: 5px 20px 50px;
+    width: 95%;
+    max-width: 500px;
+    margin: 0 auto 214px;
+}
+
+.text-container {
+    text-align: center;
+}
+
+.quiz-options {
+    margin: 60px 0;
+}
+
+[type=radio] {
+    border: 0;
+    height: 0.0625rem;
+    width: 0.0625rem;
+    position: absolute;
+}
+
+label {
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 6px 0;
+    position: relative;
+    width: 100%;
+    color: #000;
+}
+
+label:hover .alphabet {
+    background: #000;
+    color: #fff;
+}
+
+label .alphabet {
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding: .4rem .5rem .4rem;
+    width: 2.3rem;
+    margin: 0 1.3rem 0 .7rem;
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100%;
+}
+
+.questionDiv {
+background: rgba(217, 214, 228, 0.12);
+border-radius: 10px;
+padding: 20px;
+width: 95%;
+max-width: 500px;
+margin: 20px auto;
+text-align: center;
+}
+
+.answerDiv {
+display: flex;
+flex-direction: column;
+margin-top: 20px;
+}
+
+[type=radio] {
+border: 0;
+height: 0.0625rem;
+width: 0.0625rem;
+position: absolute;
+opacity: 0;
+}
+
+label {
+align-items: center;
+border-radius: 5px;
+margin-bottom: 15px;
+padding: 6px 0;
+position: relative;
+width: 100%;
+color: #000;
+cursor: pointer;
+}
+
+label:hover .alphabet {
+background: #000;
+color: #fff;
+}
+
+label .alphabet {
+border-radius: 5px;
+border: solid 1px #000;
+padding: 0.4rem 0.5rem 0.4rem;
+width: 2.3rem;
+margin: 0 1.3rem 0 0.7rem;
+display: flex;
+align-items: center;
+color: #000;
+}
+
+.clocke {
+margin-top: 10px;
+color: #000;
+}
+
+button {
+background-color: #007bff;
+color: #fff;
+padding: 8px 12px;
+margin-top: 10px;
+cursor: pointer;
+border: none;
+border-radius: 5px;
+font-size: 14px;
+}
+
+button:hover {
+background-color: #0056b3;
+}

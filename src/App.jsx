@@ -11,7 +11,7 @@ import { UserProvider } from './Context/Theme';
 import EntrancePage from './pages/EntrancePage';
 import QuizDetails from './pages/QuizDetails';
 import Room from './components/Room';
- 
+
 
 
 export const UserContext = createContext();

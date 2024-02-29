@@ -1,3 +1,4 @@
+
 import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
 
@@ -43,6 +44,8 @@ export const UserProvider = ({ children }) => {
       console.error("Error during login:", error);
     }
   };
+
+  
 
   const fetchUserData = async () => {
     try {

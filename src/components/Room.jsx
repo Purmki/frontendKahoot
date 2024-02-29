@@ -1,82 +1,52 @@
-// Room.js
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { baseUrl, socketBaseUrl } from './baseUrl';
-import { io } from 'socket.io-client';
-const socket = io.connect( socketBaseUrl );
+import React, { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import RunGame from "./runGame";
+import RoomGame from "./roomGame";
+import { socketBaseUrl } from "./baseUrl";
+import { io } from "socket.io-client";
+import { UserContext } from "../Context/Theme";
+
+const socket = io.connect(socketBaseUrl);
 
 function Room() {
-  const { roomId, quizId } = useParams();
-  const [quizDetails, setQuizDetails] = useState(null);
-  const [message, setMessage] = useState('');
-  const [receivedMessages, setReceivedMessages] = useState([]);
+  const { user } = useContext(UserContext);
+  const [quizStarted, setQuizStarted] = useState(false);
+  const { quizId } = useParams();
 
-  useEffect(() => {
-    const fetchQuizDetails = async () => {
-      try {
-        const response = await fetch(`${baseUrl}/quizzes/${quizId}`);
-        if (response.ok) {
-          const quiz = await response.json();
-          setQuizDetails(quiz);
-        } else {
-          console.error('Error fetching quiz details:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error during fetch:', error);
-      }
-    };
-
-    fetchQuizDetails();
-  }, [quizId]);
-
-  const sendMessage = () => {
-    // Emit the message to the server
-    socket.emit("message", message);
-
-    // Clear the input field
-    setMessage('');
+  const startQuiz = () => {
+    socket.emit("gameStart", quizId);
   };
 
   useEffect(() => {
-    // Listen for incoming messages from the server
-    socket.on("message", (data) => {
-      console.log(data);
-      setReceivedMessages((prevMessages) => [...prevMessages, data]);
+    user ? socket.emit("join", { quizId, user }) : null;
+  }, [user]);
+
+  useEffect(() => {
+    socket.on("gameStart", () => {
+      setQuizStarted(true);
     });
 
-    // Clean up the event listener when the component unmounts
+    socket.on("gameEnd", () => {
+      setQuizStarted(false);
+    });
+
+    // Cleanup the event listeners when the component unmounts
     return () => {
-      socket.off("message");
+      socket.off("gameStart");
+      socket.off("gameEnd");
     };
-  }, []);
+  }, [setQuizStarted]);
+
+  const handleGameRestart = () => {
+    setQuizStarted(false);
+  };
 
   return (
     <div>
-      <h1>Room {roomId}</h1>
-      {quizDetails && (
-        <div>
-          <h2>Quiz Title: {quizDetails.title}</h2>
-          {/* Render other quiz details as needed */}
-        </div>
-      )}
-
-      {/* Message input and send button */}
-      <input
-        type="text"
-        defaultValue={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
-
-      {/* Display received messages */}
-      <div>
-        <h3>Received Messages:</h3>
-        <ul>
-          {receivedMessages.map((msg, index) => (
-            <li key={index}>{msg}</li>
-          ))}
-        </ul>
-      </div>
+      <button onClick={quizStarted ? handleGameRestart : startQuiz}>
+        {quizStarted ? "stop Game" : "Start Quiz"}
+      </button>
+      {quizStarted ? <RunGame /> : <RoomGame />}
     </div>
   );
 }
